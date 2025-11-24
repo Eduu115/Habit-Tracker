@@ -1,10 +1,9 @@
-version: "3.9"
 services:
   mysql:
     image: mysql:8
-    container_name: habittracker-db
+    container_name: habittracker-db2
     environment:
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: habittracker
     ports:
       - "3306:3306"
@@ -13,24 +12,16 @@ services:
       - mysql-data:/var/lib/mysql
 
   backend:
-    build: ./backend
+    build: ../backend
     container_name: habittracker-backend
     ports:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/habittracker
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - mysql
-
-  frontend:
-    build: ./frontend
-    container_name: habittracker-frontend
-    ports:
-      - "5173:80"
-    depends_on:
-      - backend
 
 volumes:
   mysql-data:
