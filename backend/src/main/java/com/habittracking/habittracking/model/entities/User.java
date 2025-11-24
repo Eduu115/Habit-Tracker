@@ -21,6 +21,8 @@ import lombok.ToString;
 @Table(name="usuarios")
 public class User implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     private Long id;
     private String username;
