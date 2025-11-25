@@ -41,7 +41,7 @@ public class UserRestController {
     public ResponseEntity<?> createUser(@RequestBody UserRegisterDto uRDto) {
         return ResponseEntity.ok(us.register(uRDto));
     }
-
+    // EN EL PUT Y POST Y TOdO A LO QUE SE LE PASA ID NO FUNCIONA !!! RESOLVER !!!
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserUpdateDto uUDto) {
         return ResponseEntity.ok(us.update(uUDto, id));
