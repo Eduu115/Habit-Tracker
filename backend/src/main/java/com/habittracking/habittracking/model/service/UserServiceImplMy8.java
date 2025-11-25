@@ -31,7 +31,7 @@ public class UserServiceImplMy8 implements UserService{
 
     @Override
     public User login(String un, String pw) {
-        return urepo.findfindByUsernameAndPassword(un, pw);
+        return urepo.findByUsernameAndPassword(un, pw);
     }
 
     @Override
