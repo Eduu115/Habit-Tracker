@@ -1,14 +1,12 @@
 package com.habittracking.habittracking.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.habittracking.habittracking.model.entities.User;
 import com.habittracking.habittracking.model.service.UserServiceImplMy8;
 
 
@@ -21,8 +19,8 @@ public class UserRestController {
     UserServiceImplMy8 us;
 
     @GetMapping("/")
-    public List<User> getUsers() {
-        return us.findAll();
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(us.findAll());
     }
     
 }

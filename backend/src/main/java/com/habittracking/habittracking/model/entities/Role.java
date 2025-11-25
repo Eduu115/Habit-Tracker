@@ -1,6 +1,8 @@
 package com.habittracking.habittracking.model.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,7 +17,8 @@ import lombok.ToString;
 @Table(name="roles")
 public class Role {
     @Id
-    public Long id;
-    public String name;
-    public String description;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String description;
 }

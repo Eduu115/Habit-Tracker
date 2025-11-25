@@ -21,7 +21,7 @@ CREATE TABLE habitos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
+    descripcion VARCHAR(255),
     frecuencia VARCHAR(20) NOT NULL,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES usuarios(id)
