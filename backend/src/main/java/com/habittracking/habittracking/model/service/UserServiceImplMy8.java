@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class UserServiceImplMy8 implements UserService{
     @Autowired
     RoleServiceImplMy8 rs;
     @Autowired
+    @Lazy
     PasswordEncoder passwordEncoder;
 
     // ------------------ HERENCIA ---------------------

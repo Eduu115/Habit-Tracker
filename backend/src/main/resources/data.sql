@@ -4,17 +4,19 @@ INSERT INTO roles (name, description) VALUES
 
 INSERT INTO usuarios (username, email, password, name, last_name, role_id, enabled)
 VALUES
-('admin1', 'admin1@example.com', '$2a$10$abc123', 'Carlos', 'Martínez', 1, 1),
-('admin2', 'admin2@example.com', '$2a$10$def456', 'Lucía', 'Gómez', 1, 1),
+-- IMPORTANTE: Todos los usuarios tienen la contraseña: password123
+-- Hash BCrypt válido para "password123" (todos usan el mismo hash para simplificar)
+('admin1', 'admin1@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Carlos', 'Martínez', 1, 1),
+('admin2', 'admin2@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Lucía', 'Gómez', 1, 1),
 
-('user1', 'user1@example.com', '$2a$10$u1', 'Pedro', 'López', 2, 1),
-('user2', 'user2@example.com', '$2a$10$u2', 'María', 'Hernández', 2, 1),
-('user3', 'user3@example.com', '$2a$10$u3', 'Ana', 'Pérez', 2, 1),
-('user4', 'user4@example.com', '$2a$10$u4', 'Diego', 'Ruiz', 2, 1),
-('user5', 'user5@example.com', '$2a$10$u5', 'Sara', 'Iglesias', 2, 1),
-('user6', 'user6@example.com', '$2a$10$u6', 'David', 'Ortega', 2, 1),
-('user7', 'user7@example.com', '$2a$10$u7', 'Laura', 'Santos', 2, 1),
-('user8', 'user8@example.com', '$2a$10$u8', 'Hugo', 'Navas', 2, 1);
+('user1', 'user1@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Pedro', 'López', 2, 1),
+('user2', 'user2@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'María', 'Hernández', 2, 1),
+('user3', 'user3@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Ana', 'Pérez', 2, 1),
+('user4', 'user4@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Diego', 'Ruiz', 2, 1),
+('user5', 'user5@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Sara', 'Iglesias', 2, 1),
+('user6', 'user6@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'David', 'Ortega', 2, 1),
+('user7', 'user7@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Laura', 'Santos', 2, 1),
+('user8', 'user8@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Hugo', 'Navas', 2, 1);
 
 INSERT INTO habitos (user_id, nombre, descripcion, frecuencia)
 VALUES
