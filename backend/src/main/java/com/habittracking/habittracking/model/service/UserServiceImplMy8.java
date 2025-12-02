@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.habittracking.habittracking.model.dto.UserRegisterDto;
@@ -18,8 +19,20 @@ public class UserServiceImplMy8 implements UserService{
     UserRepository urepo;
     @Autowired
     RoleServiceImplMy8 rs;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     // ------------------ HERENCIA ---------------------
+    
+    @Override
+    public User findByUsername(String username) {
+        return urepo.findByUsername(username);
+    }
+    
+    @Override
+    public User findByEmail(String email) {
+        return urepo.findByEmail(email);
+    }
     @Override
     public User findOne(Long id) {
         return urepo.findById(id).orElse(null);
@@ -39,7 +52,9 @@ public class UserServiceImplMy8 implements UserService{
     public User register(UserRegisterDto u) {
          
         try {
-            u.setPassword(withNoop(u.getPassword())); // le ponemos el noop
+            // Codificar la contraseña para guardarla codeada
+            String encodedPassword = passwordEncoder.encode(u.getPassword());
+            u.setPassword(encodedPassword);
             return urepo.save(registerToUser(u));
         } catch (Exception e) {
             e.getMessage();
@@ -90,14 +105,6 @@ public class UserServiceImplMy8 implements UserService{
         finalUser.setLastName(u.getName());
         finalUser.setUsername(u.getUsername());
         return finalUser;
-    }
-    
-    private String withNoop(String raw) {
-        if (raw.startsWith("{noop}")) {
-            return raw;
-        }
-        String conNoop = "{noop}" + raw;
-        return conNoop;
     }
 
 }

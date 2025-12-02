@@ -13,4 +13,6 @@ public interface UserService {
     User register(UserRegisterDto u);
     User update (UserUpdateDto u, Long userId);
     int delete(Long userId);
+    User findByUsername(String username); // no la uso al final pero pa poder buscar por username o email 
+    User findByEmail(String email);
 }
