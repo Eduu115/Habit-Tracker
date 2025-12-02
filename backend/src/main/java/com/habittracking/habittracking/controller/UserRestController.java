@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.habittracking.habittracking.model.dto.UserRegisterDto;
@@ -33,7 +32,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUser(@RequestParam Long id) {
+    public ResponseEntity<?> getUser(@PathVariable long id) {
         return ResponseEntity.ok(us.findOne(id));
     }
     
@@ -43,12 +42,12 @@ public class UserRestController {
     }
     // EN EL PUT Y POST Y TOdO A LO QUE SE LE PASA ID NO FUNCIONA !!! RESOLVER !!!
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserUpdateDto uUDto) {
+    public ResponseEntity<?> updateUser(@PathVariable long id, @RequestBody UserUpdateDto uUDto) {
         return ResponseEntity.ok(us.update(uUDto, id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long userId){
+    public ResponseEntity<?> deleteUser(@PathVariable long userId){
         return ResponseEntity.ok(us.delete(userId));
     }
 
