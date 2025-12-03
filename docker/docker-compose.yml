@@ -10,6 +10,8 @@ services:
     volumes:
       - ./mysql/init:/docker-entrypoint-initdb.d  # ← Ruta relativa desde docker/
       - mysql-data:/var/lib/mysql
+    networks:
+      - habittracker-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       timeout: 20s
@@ -27,7 +29,50 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    networks:
+      - habittracker-network
     restart: on-failure
+
+  frontend-dev:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+      target: development
+    container_name: habittracker-frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_API_URL: http://localhost:8080/api
+    depends_on:
+      - backend
+    networks:
+      - habittracker-network
+    restart: on-failure
+    profiles:
+      - dev
+
+  frontend-prod:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+      target: production
+    container_name: habittracker-frontend-prod
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - habittracker-network
+    restart: on-failure
+    profiles:
+      - prod
+
+networks:
+  habittracker-network:
+    driver: bridge
 
 volumes:
   mysql-data:

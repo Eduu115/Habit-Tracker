@@ -1,18 +1,18 @@
-# para iniciar docker con todo
+# Comandos utiles
+cd docker (En caso de estar en docker, no hacer)
 
+# Modo Desarrollo (con hot-reload en puerto 5173)
+docker-compose --profile dev up -d
 
-## para iniciar mysql en docker
-docker run --name habittracker-db \
-  -e MYSQL_ROOT_PASSWORD=root \
-  -e MYSQL_DATABASE=habittracker \
-  -v $(pwd)/docker/mysql/init:/docker-entrypoint-initdb.d \
-  -v mysql-data:/var/lib/mysql \
-  -p 3306:3306 \
-  -d mysql:8
+# Modo Producción (build optimizado en puerto 80)
+docker-compose --profile prod up -d
 
-# BACK
-## para relanzar y no tirar de la snapshot, sino de mi codigo local
-docker run --name habittracker-backend \
-  -v /ruta/local/backend:/app \
-  -p 8080:8080 \
-  habittracker-backend
+# Ver logs
+docker-compose logs -f
+
+# Detener todo
+docker-compose --profile dev down
+docker-compose --profile prod down
+
+# Reconstruir contenedores
+docker-compose build --no-cache
